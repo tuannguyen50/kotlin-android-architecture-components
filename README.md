@@ -1,4 +1,4 @@
-## Kotlin-Android-Architecture-Components
+## kotlin-android-architecture-components
 
 ### Libraries
 - Android Support Library
