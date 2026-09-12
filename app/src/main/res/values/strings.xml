@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ArchitecureComponentKotlin</string>
+    <string name="app_name">KotlinAndroidArchitectureComponents</string>
     <string name="retry">Retry</string>
     <string name="unknown_error">Unknown error</string>
 </resources>

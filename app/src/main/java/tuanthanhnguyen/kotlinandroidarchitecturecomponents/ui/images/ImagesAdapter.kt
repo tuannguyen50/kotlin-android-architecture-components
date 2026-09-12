@@ -1,0 +1,53 @@
+/*
+ * Copyright (C) 2017 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// Tuan Thanh Nguyen modified this file.
+
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.images
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.databinding.DataBindingComponent
+import androidx.databinding.DataBindingUtil
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.R
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.databinding.ItemImageBinding
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.common.DataBoundListAdapter
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.vo.Image
+
+class ImagesAdapter(
+    private val dataBindingComponent: DataBindingComponent
+) : DataBoundListAdapter<Image, ItemImageBinding>() {
+    override fun createBinding(parent: ViewGroup): ItemImageBinding {
+        val binding = DataBindingUtil
+            .inflate<ItemImageBinding>(
+                LayoutInflater.from(parent.context), R.layout.item_image,
+                parent, false, dataBindingComponent
+            )
+        return binding
+    }
+
+    override fun bind(binding: ItemImageBinding, item: Image) {
+        binding.image = item
+    }
+
+    override fun areItemsTheSame(oldItem: Image, newItem: Image): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: Image, newItem: Image): Boolean {
+        return oldItem.urls.small == newItem.urls.small
+    }
+}
