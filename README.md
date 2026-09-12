@@ -1,14 +1,6 @@
 # kotlin-android-architecture-components
 
-## Libraries
+## How to access the photos Unsplash API
 
-- Android Support Library
-- Android Architecture Components(Room, ViewModel, LiveData)
-- Android Data Binding
-- RxJava 2
-- Dagger 2
-- Retrofit 2
-
-## License
-
-This project is available under the MIT license. See the LICENSE file for more info.
+You must set the value of the ACCESS_KEY constant value in ApiConfig object in this project (I 
+currently set this constant value to the empty string) to your application's access key value.
