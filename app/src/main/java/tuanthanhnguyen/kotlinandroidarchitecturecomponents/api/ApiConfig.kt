@@ -20,8 +20,13 @@ package tuanthanhnguyen.kotlinandroidarchitecturecomponents.api
 
 object ApiConfig {
 
-    // You must set the value of the ACCESS_KEY constant value (I currently set this constant
-    // value to the empty string) to your application's access key value.
+    /**
+     * How to this application access the photos from the Unsplash API
+     *
+     * First, you must create your application in your Unsplash developer account to get the
+     * access key value of this application of yours. Second, you must set the value of this
+     * ACCESS_KEY constant to the access key value of this application of yours.
+     */
     const val ACCESS_KEY = ""
 
     const val PUBLIC_AUTHORIZATION = "Client-ID $ACCESS_KEY"
