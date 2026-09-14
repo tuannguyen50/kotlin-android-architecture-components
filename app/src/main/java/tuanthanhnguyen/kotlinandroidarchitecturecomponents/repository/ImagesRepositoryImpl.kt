@@ -23,7 +23,10 @@ import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.ApiConfig.PUBLIC_
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.ImagesService
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.ImageDao
 import io.reactivex.Flowable
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.vo.Image
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.mapper.ImageResponseMapper
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.mapper.ImageEntityMapper
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.mapper.UserEntityMapper
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Image
 import javax.inject.Inject
 
 class ImagesRepositoryImpl @Inject constructor(
@@ -37,6 +40,21 @@ class ImagesRepositoryImpl @Inject constructor(
             ApiConfig.DEFAULT_PAGE,
             ApiConfig.DEFAULT_PER_PAGE,
             ApiConfig.DEFAULT_ORDER_BY
-        ).doOnNext { imageDao.upsertImages(it) }
+        )
+            .flatMap { imagesResponse ->
+                Flowable.fromIterable(imagesResponse)
+            }
+            .map { imageResponse ->
+                val image = ImageResponseMapper.imageResponseToImage(imageResponse)
+                return@map image
+            }
+            .doOnNext { image ->
+                imageDao.insertImageEntityWithUserEntity(
+                    ImageEntityMapper.imageToImageEntity(image),
+                    UserEntityMapper.userToUserEntity(image.user)
+                )
+            }
+            .toList()
+            .toFlowable()
     }
 }

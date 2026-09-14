@@ -16,25 +16,18 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.vo
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.mapper
 
-data class Resource<out T>(
-    val data: T? = null,
-    val status: Status = Status.LOADING,
-    val errorMessage: String? = ""
-) {
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.ImageEntity
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Image
 
-    companion object {
+object ImageEntityMapper {
 
-        fun <T> success(data: T): Resource<T> = Resource(data, Status.SUCCESS)
-
-        fun <T> failure(errorMessage: String?): Resource<T> =
-            Resource(null, Status.ERROR, errorMessage)
-
-        fun <T> loading(): Resource<T> = Resource(data = null, status =  Status.LOADING)
+    fun imageToImageEntity(image: Image): ImageEntity {
+        return ImageEntity(
+            image.id,
+            ImageUrlsEmbeddedMapper.imageUrlsToImageUrlsEmbedded(image.imageUrls),
+            image.user.id
+        )
     }
-}
-
-enum class Status {
-    SUCCESS, ERROR, LOADING
 }

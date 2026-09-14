@@ -23,8 +23,8 @@ import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.vo.Image
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.vo.SearchResult
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.ImageResponse
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.SearchImageResultsResponse
 
 interface ImagesService {
 
@@ -34,7 +34,7 @@ interface ImagesService {
         @Query(ApiConfig.PAGE) pageNumber: Int,
         @Query(ApiConfig.PER_PAGE) picturePerPage: Int,
         @Query(ApiConfig.ORDER_BY) orderBy: String
-    ): Flowable<List<Image>>
+    ): Flowable<List<ImageResponse>>
 
     @GET("search/photos")
     fun searchImages(
@@ -43,5 +43,5 @@ interface ImagesService {
         @Query(ApiConfig.PAGE) pageNumber: Int,
         @Query(ApiConfig.PER_PAGE) picturePerPage: Int,
         @Query(ApiConfig.ORDER_BY) orderBy: String
-    ): Single<SearchResult>
+    ): Single<SearchImageResultsResponse>
 }

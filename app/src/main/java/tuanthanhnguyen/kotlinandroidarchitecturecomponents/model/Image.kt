@@ -16,12 +16,10 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.vo
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.model
 
-import com.google.gson.annotations.SerializedName
-
-data class SearchResult(
-    val total: Int,
-    @SerializedName("total_pages") val totalPages: Int,
-    val results: List<Image>
+data class Image(
+    val id: String,
+    val imageUrls: ImageUrls,
+    val user: User
 )

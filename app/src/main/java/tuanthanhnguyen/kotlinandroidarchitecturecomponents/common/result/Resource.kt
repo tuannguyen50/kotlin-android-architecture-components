@@ -16,11 +16,21 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.common.result
 
-object DatabaseConfig {
+data class Resource<out T>(
+    val data: T? = null,
+    val status: Status = Status.LOADING,
+    val errorMessage: String? = ""
+) {
 
-    const val DATABASE_NAME = "images.db"
-    const val IMAGES_TABLE_NAME = "images"
-    const val USERS_TABLE_NAME = "users"
+    companion object {
+
+        fun <T> success(data: T): Resource<T> = Resource(data, Status.SUCCESS)
+
+        fun <T> failure(errorMessage: String?): Resource<T> =
+            Resource(null, Status.ERROR, errorMessage)
+
+        fun <T> loading(): Resource<T> = Resource(data = null, status =  Status.LOADING)
+    }
 }

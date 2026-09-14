@@ -21,13 +21,13 @@
 
     <data>
 
-        <import type="tuanthanhnguyen.kotlinandroidarchitecturecomponents.vo.Resource" />
+        <import type="tuanthanhnguyen.kotlinandroidarchitecturecomponents.common.result.Resource" />
 
-        <import type="tuanthanhnguyen.kotlinandroidarchitecturecomponents.vo.Status" />
+        <import type="tuanthanhnguyen.kotlinandroidarchitecturecomponents.common.result.Status" />
 
         <variable
             name="resource"
-            type="Resource" />
+            type="tuanthanhnguyen.kotlinandroidarchitecturecomponents.common.result.Resource" />
 
         <variable
             name="callback"
@@ -37,16 +37,8 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:visibleGone="@{resource.status != Status.SUCCESS}">
 
         <androidx.core.widget.ContentLoadingProgressBar
@@ -54,7 +46,7 @@
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_marginBottom="@dimen/spacing_between_views_in_loading_state_layout"
             app:visibleGone="@{resource.status == Status.LOADING}" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -69,6 +61,7 @@
             android:id="@+id/error_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_between_views_in_loading_state_layout"
             android:text="@{resource.errorMessage ?? @string/unknown_error}"
             app:visibleGone="@{resource.status == Status.ERROR}" />
     </androidx.appcompat.widget.LinearLayoutCompat>

@@ -25,8 +25,8 @@ import androidx.lifecycle.switchMap
 import androidx.lifecycle.toLiveData
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository.ImagesRepository
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.util.scheduler.SchedulerProvider
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.vo.Image
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.vo.Resource
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Image
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.common.result.Resource
 import javax.inject.Inject
 
 class ImagesViewModel @Inject constructor(

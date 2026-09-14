@@ -16,11 +16,20 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.mapper
 
-object DatabaseConfig {
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.ImageUrlsResponse
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.ImageUrls
 
-    const val DATABASE_NAME = "images.db"
-    const val IMAGES_TABLE_NAME = "images"
-    const val USERS_TABLE_NAME = "users"
+object ImageUrlsResponseMapper {
+
+    fun imageUrlsResponseToImageUrls(imageUrlsResponse: ImageUrlsResponse): ImageUrls {
+        return ImageUrls(
+            imageUrlsResponse.raw,
+            imageUrlsResponse.full,
+            imageUrlsResponse.regular,
+            imageUrlsResponse.small,
+            imageUrlsResponse.thumb
+        )
+    }
 }

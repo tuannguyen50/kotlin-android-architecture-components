@@ -24,16 +24,15 @@
 
         <variable
             name="image"
-            type="tuanthanhnguyen.kotlinandroidarchitecturecomponents.vo.Image" />
+            type="tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Image" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="8dp"
-        app:cardPreventCornerOverlap="true"
-        app:elevation="4dp"
+        app:cardCornerRadius="@dimen/grid_image_item_card_corner_radius"
+        app:elevation="@dimen/grid_image_item_card_elevation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -47,7 +46,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:scaleType="centerCrop"
-                app:imageUrl="@{image.urls.small}"
+                app:imageUrl="@{image.imageUrls.small}"
                 app:layout_constraintDimensionRatio="h,9:6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -59,10 +58,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@color/transparent_black"
-                android:paddingStart="8dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="8dp"
-                android:paddingBottom="4dp"
+                android:paddingStart="@dimen/padding_start_and_padding_end_author_text_in_grid_image_item"
+                android:paddingTop="@dimen/padding_top_and_padding_bottom_author_text_in_grid_image_item"
+                android:paddingEnd="@dimen/padding_start_and_padding_end_author_text_in_grid_image_item"
+                android:paddingBottom="@dimen/padding_top_and_padding_bottom_author_text_in_grid_image_item"
                 android:text="@{image.user.name}"
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textColor="@color/white"

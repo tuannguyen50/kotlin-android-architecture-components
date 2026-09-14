@@ -20,30 +20,31 @@ package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db
 
 import androidx.room.Dao
 import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Update
 import androidx.room.Upsert
-import io.reactivex.Single
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.vo.Image
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.ImageEntity
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.UserEntity
 
 @Dao
 interface ImageDao {
 
-    @Query("SELECT * FROM ${DatabaseConfig.IMAGES_TABLE_NAME}")
-    fun getImages(): Single<List<Image>>
-
-    @Query("SELECT * FROM ${DatabaseConfig.IMAGES_TABLE_NAME} WHERE id = :imageId")
-    fun getImage(imageId: String): Single<Image>
-
     @Insert
-    fun insertImage(image: Image)
-
-    @Insert
-    fun insertImages(images: List<Image>)
+    fun insertImageEntity(imageEntity: ImageEntity)
 
     @Upsert
-    fun upsertImages(images: List<Image>)
+    fun upsertImageEntity(imageEntity: ImageEntity)
 
     @Update
-    fun updateImage(image: Image)
+    fun updateImageEntity(imageEntity: ImageEntity)
+
+    @Upsert
+    fun upsertUserEntity(userEntity: UserEntity)
+
+    @Transaction
+    fun insertImageEntityWithUserEntity(imageEntity: ImageEntity, userEntity: UserEntity) {
+        upsertUserEntity(userEntity)
+
+        upsertImageEntity(imageEntity)
+    }
 }

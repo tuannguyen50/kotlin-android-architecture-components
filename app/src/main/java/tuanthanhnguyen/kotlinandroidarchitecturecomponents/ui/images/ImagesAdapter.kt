@@ -25,7 +25,7 @@ import androidx.databinding.DataBindingUtil
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.R
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.databinding.ItemImageBinding
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.common.DataBoundListAdapter
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.vo.Image
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Image
 
 class ImagesAdapter(
     private val dataBindingComponent: DataBindingComponent
@@ -45,9 +45,13 @@ class ImagesAdapter(
 
     override fun areItemsTheSame(oldItem: Image, newItem: Image): Boolean {
         return oldItem.id == newItem.id
+                && oldItem.imageUrls.small == newItem.imageUrls.small
+                && oldItem.user.name == newItem.user.name
     }
 
     override fun areContentsTheSame(oldItem: Image, newItem: Image): Boolean {
-        return oldItem.urls.small == newItem.urls.small
+        return oldItem.id == newItem.id
+                && oldItem.imageUrls.small == newItem.imageUrls.small
+                && oldItem.user.name == newItem.user.name
     }
 }
