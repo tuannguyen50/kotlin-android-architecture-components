@@ -16,11 +16,17 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity
 
-object DatabaseConfig {
+import androidx.room.ColumnInfo
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.DatabaseConfig
 
-    const val DATABASE_NAME = "images.db"
-    const val IMAGES_TABLE_NAME = "images"
-    const val USERS_TABLE_NAME = "users"
-}
+@Entity(tableName = DatabaseConfig.IMAGES_TABLE_NAME)
+data class ImageEntity(
+    @PrimaryKey val id: String,
+    @Embedded(prefix = "url_") val imageUrlsEmbedded: ImageUrlsEmbedded,
+    @ColumnInfo(name = "user_id") val userId: String
+)

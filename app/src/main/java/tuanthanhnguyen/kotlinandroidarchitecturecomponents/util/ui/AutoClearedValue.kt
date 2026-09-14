@@ -16,7 +16,7 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.util
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.util.ui
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

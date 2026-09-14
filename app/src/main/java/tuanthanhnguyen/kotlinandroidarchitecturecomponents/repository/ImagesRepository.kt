@@ -19,7 +19,7 @@
 package tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository
 
 import io.reactivex.Flowable
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.vo.Image
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Image
 
 interface ImagesRepository {
 

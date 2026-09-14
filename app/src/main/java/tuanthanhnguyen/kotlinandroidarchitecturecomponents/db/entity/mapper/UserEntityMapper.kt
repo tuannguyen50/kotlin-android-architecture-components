@@ -16,11 +16,14 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.mapper
 
-object DatabaseConfig {
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.UserEntity
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.User
 
-    const val DATABASE_NAME = "images.db"
-    const val IMAGES_TABLE_NAME = "images"
-    const val USERS_TABLE_NAME = "users"
+object UserEntityMapper {
+
+    fun userToUserEntity(user: User): UserEntity {
+        return UserEntity(user.id, user.username, user.name)
+    }
 }

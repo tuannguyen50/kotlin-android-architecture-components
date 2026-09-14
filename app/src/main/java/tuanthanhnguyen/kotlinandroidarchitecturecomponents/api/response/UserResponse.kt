@@ -16,11 +16,10 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response
 
-object DatabaseConfig {
-
-    const val DATABASE_NAME = "images.db"
-    const val IMAGES_TABLE_NAME = "images"
-    const val USERS_TABLE_NAME = "users"
-}
+class UserResponse(
+    val id: String,
+    val username: String,
+    val name: String
+)

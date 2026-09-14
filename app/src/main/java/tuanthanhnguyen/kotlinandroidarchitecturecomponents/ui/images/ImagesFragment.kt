@@ -34,8 +34,7 @@ import tuanthanhnguyen.kotlinandroidarchitecturecomponents.di.Injectable
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.common.GridSpacingItemDecoration
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.common.NavigationController
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.common.RetryCallback
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.util.AutoClearedValue
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.vo.Image
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.util.ui.AutoClearedValue
 import javax.inject.Inject
 
 class ImagesFragment : Fragment(), Injectable {
@@ -94,7 +93,7 @@ class ImagesFragment : Fragment(), Injectable {
 
     private fun initRecyclerView() {
         val gridSpacingItemInPixels =
-            resources.getDimensionPixelSize(R.dimen.grid_item_spacing)
+            resources.getDimensionPixelSize(R.dimen.grid_image_item_spacing)
         val includeEdge = true
         val spanCount = 2
         val imagesAdapter = ImagesAdapter(dataBindingComponent)

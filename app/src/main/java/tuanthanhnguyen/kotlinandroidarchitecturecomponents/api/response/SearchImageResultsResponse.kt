@@ -16,11 +16,12 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response
 
-object DatabaseConfig {
+import com.google.gson.annotations.SerializedName
 
-    const val DATABASE_NAME = "images.db"
-    const val IMAGES_TABLE_NAME = "images"
-    const val USERS_TABLE_NAME = "users"
-}
+class SearchImageResultsResponse(
+    val total: Int,
+    @SerializedName("total_pages") val totalPages: Int,
+    @SerializedName("results") val imageResultsResponse: List<ImageResponse>
+)

@@ -16,11 +16,20 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.mapper
 
-object DatabaseConfig {
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.ImageUrlsEmbedded
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.ImageUrls
 
-    const val DATABASE_NAME = "images.db"
-    const val IMAGES_TABLE_NAME = "images"
-    const val USERS_TABLE_NAME = "users"
+object ImageUrlsEmbeddedMapper {
+
+    fun imageUrlsToImageUrlsEmbedded(imageUrls: ImageUrls): ImageUrlsEmbedded {
+        return ImageUrlsEmbedded(
+            imageUrls.raw,
+            imageUrls.full,
+            imageUrls.regular,
+            imageUrls.small,
+            imageUrls.thumb
+        )
+    }
 }

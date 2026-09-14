@@ -18,9 +18,7 @@
 
 package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db
 
-object DatabaseConfig {
+import androidx.room.Dao
 
-    const val DATABASE_NAME = "images.db"
-    const val IMAGES_TABLE_NAME = "images"
-    const val USERS_TABLE_NAME = "users"
-}
+@Dao
+interface UserDao

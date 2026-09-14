@@ -20,10 +20,19 @@ package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.vo.Image
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.ImageEntity
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.UserEntity
 
-@Database(entities = [Image::class], version = 1, exportSchema = true)
+@Database(
+    entities = [
+        ImageEntity::class,
+        UserEntity::class],
+    version = 1,
+    exportSchema = true
+)
 abstract class ImageDb : RoomDatabase() {
 
     abstract fun imageDao(): ImageDao
+
+    abstract fun userDao(): UserDao
 }

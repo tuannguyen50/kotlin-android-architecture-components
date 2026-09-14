@@ -22,13 +22,13 @@
 
     <data>
 
-        <import type="tuanthanhnguyen.kotlinandroidarchitecturecomponents.vo.Resource" />
+        <import type="tuanthanhnguyen.kotlinandroidarchitecturecomponents.common.result.Resource" />
 
-        <import type="tuanthanhnguyen.kotlinandroidarchitecturecomponents.vo.Status" />
+        <import type="tuanthanhnguyen.kotlinandroidarchitecturecomponents.common.result.Status" />
 
         <variable
             name="resource"
-            type="Resource" />
+            type="tuanthanhnguyen.kotlinandroidarchitecturecomponents.common.result.Resource" />
 
         <variable
             name="callback"
@@ -48,6 +48,13 @@
         <include
             android:id="@+id/loading_include"
             layout="@layout/loading_state"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/layout_margin_loading_state_layout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             bind:callback="@{callback}"
             bind:resource="@{resource}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
