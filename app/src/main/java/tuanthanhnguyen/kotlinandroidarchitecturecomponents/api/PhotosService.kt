@@ -19,12 +19,10 @@
 package tuanthanhnguyen.kotlinandroidarchitecturecomponents.api
 
 import io.reactivex.Flowable
-import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.PhotoResponse
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.SearchPhotoResultsResponse
 
 interface PhotosService {
 
@@ -35,13 +33,4 @@ interface PhotosService {
         @Query(ApiConfig.PER_PAGE) perPage: Int,
         @Query(ApiConfig.ORDER_BY) orderBy: String
     ): Flowable<List<PhotoResponse>>
-
-    @GET("search/photos")
-    fun searchPhotos(
-        @Header(ApiConfig.AUTHORIZATION) publicAuthorization: String,
-        @Query(ApiConfig.QUERY) query: String,
-        @Query(ApiConfig.PAGE) page: Int,
-        @Query(ApiConfig.PER_PAGE) perPage: Int,
-        @Query(ApiConfig.ORDER_BY) orderBy: String
-    ): Single<SearchPhotoResultsResponse>
 }
