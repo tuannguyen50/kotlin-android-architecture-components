@@ -16,10 +16,23 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.model
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db
 
-data class Image(
-    val id: String,
-    val imageUrls: ImageUrls,
-    val user: User
-)
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Update
+import androidx.room.Upsert
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.PhotoEntity
+
+@Dao
+interface PhotoDao {
+
+    @Insert
+    fun insertPhotoEntity(photoEntity: PhotoEntity)
+
+    @Upsert
+    fun upsertPhotoEntity(photoEntity: PhotoEntity)
+
+    @Update
+    fun updatePhotoEntity(photoEntity: PhotoEntity)
+}

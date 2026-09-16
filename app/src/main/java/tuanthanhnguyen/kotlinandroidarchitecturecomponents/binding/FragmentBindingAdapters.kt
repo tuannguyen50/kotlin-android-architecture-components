@@ -18,7 +18,7 @@
 
 package tuanthanhnguyen.kotlinandroidarchitecturecomponents.binding
 
-import android.widget.ImageView
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
@@ -26,10 +26,10 @@ import javax.inject.Inject
 
 class FragmentBindingAdapters @Inject constructor(val fragment: Fragment) {
 
-    @BindingAdapter("imageUrl")
-    fun bindImage(imageView: ImageView, url: String) {
+    @BindingAdapter("photoUrl")
+    fun bindImage(appCompatImageView: AppCompatImageView, url: String) {
         Glide.with(fragment)
             .load(url)
-            .into(imageView)
+            .into(appCompatImageView)
     }
 }

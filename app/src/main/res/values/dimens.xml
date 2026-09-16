@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="grid_image_item_spacing">4dp</dimen>
+    <dimen name="grid_photo_item_spacing">4dp</dimen>
 
-    <dimen name="grid_image_item_card_elevation">4dp</dimen>
-    <dimen name="grid_image_item_card_corner_radius">8dp</dimen>
-    <dimen name="padding_start_and_padding_end_author_text_in_grid_image_item">8dp</dimen>
-    <dimen name="padding_top_and_padding_bottom_author_text_in_grid_image_item">4dp</dimen>
+    <dimen name="grid_photo_item_card_elevation">4dp</dimen>
+    <dimen name="grid_photo_item_card_corner_radius">8dp</dimen>
+    <dimen name="padding_start_and_padding_end_author_text_in_grid_photo_item">8dp</dimen>
+    <dimen name="padding_top_and_padding_bottom_author_text_in_grid_photo_item">4dp</dimen>
 
     <dimen name="spacing_between_views_in_loading_state_layout">8dp</dimen>
     <dimen name="layout_margin_loading_state_layout">16dp</dimen>

@@ -18,7 +18,7 @@
 
 package tuanthanhnguyen.kotlinandroidarchitecturecomponents.di
 
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.images.ImagesFragment
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.photos.PhotosFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -26,5 +26,5 @@ import dagger.android.ContributesAndroidInjector
 abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
-    abstract fun contributeSearchFragment(): ImagesFragment
+    abstract fun contributePhotosFragment(): PhotosFragment
 }

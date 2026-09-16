@@ -19,6 +19,20 @@
 package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db
 
 import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Update
+import androidx.room.Upsert
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.UserEntity
 
 @Dao
-interface UserDao
+interface UserDao {
+
+    @Insert
+    fun insertUserEntity(userEntity: UserEntity)
+
+    @Upsert
+    fun upsertUserEntity(userEntity: UserEntity)
+
+    @Update
+    fun updateUserEntity(userEntity: UserEntity)
+}

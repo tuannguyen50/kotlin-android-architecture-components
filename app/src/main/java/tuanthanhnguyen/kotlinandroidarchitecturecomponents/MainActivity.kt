@@ -38,8 +38,16 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Add the photos fragment if the creation of this activity not from the recreation of
+        // this activity the recreation of this activity then savedInstanceStatus at this onCreate
+        // function will not be null because if add the photos fragment from the recreation of
+        // this activity then the fragment manager will add the photos fragment and when the
+        // recreation of this activity then the fragment manager will restore the photos fragment
+        // added before then the fragment manager manages the fragment back stack this fragment
+        // back stack has many the photos fragment
         if (savedInstanceState == null) {
-            navigationController.navigateToImage()
+            navigationController.navigateToPhotos()
         }
     }
 

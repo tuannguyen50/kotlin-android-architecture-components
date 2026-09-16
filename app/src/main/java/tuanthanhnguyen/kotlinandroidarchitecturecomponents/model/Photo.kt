@@ -16,17 +16,10 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Embedded
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.DatabaseConfig
-
-@Entity(tableName = DatabaseConfig.IMAGES_TABLE_NAME)
-data class ImageEntity(
-    @PrimaryKey val id: String,
-    @Embedded(prefix = "url_") val imageUrlsEmbedded: ImageUrlsEmbedded,
-    @ColumnInfo(name = "user_id") val userId: String
+data class Photo(
+    val id: String,
+    val photoUrls: PhotoUrls,
+    val user: User
 )

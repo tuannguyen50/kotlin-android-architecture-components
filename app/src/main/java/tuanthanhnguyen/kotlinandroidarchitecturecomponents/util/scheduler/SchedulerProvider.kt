@@ -21,6 +21,7 @@ package tuanthanhnguyen.kotlinandroidarchitecturecomponents.util.scheduler
 import io.reactivex.Scheduler
 
 interface SchedulerProvider {
+
     fun ui(): Scheduler
 
     fun computation(): Scheduler

@@ -20,8 +20,8 @@ package tuanthanhnguyen.kotlinandroidarchitecturecomponents.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.images.ImagesViewModel
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.viewmodel.ImagesViewModelFactory
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.photos.PhotosViewModel
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.viewmodel.PhotosViewModelFactory
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -31,9 +31,11 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(ImagesViewModel::class)
-    abstract fun bindImagesViewModel(imagesViewModel: ImagesViewModel): ViewModel
+    @ViewModelKey(PhotosViewModel::class)
+    abstract fun bindPhotosViewModel(photosViewModel: PhotosViewModel): ViewModel
 
     @Binds
-    abstract fun bindViewModelFactory(factory: ImagesViewModelFactory): ViewModelProvider.Factory
+    abstract fun bindPhotosViewModelFactory(
+        photosViewModelFactory: PhotosViewModelFactory
+    ): ViewModelProvider.Factory
 }

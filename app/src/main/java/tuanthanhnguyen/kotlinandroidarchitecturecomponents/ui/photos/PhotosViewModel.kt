@@ -16,28 +16,28 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.images
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.photos
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
 import androidx.lifecycle.toLiveData
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository.ImagesRepository
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository.PhotosRepository
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.util.scheduler.SchedulerProvider
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Image
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Photo
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.common.result.Resource
 import javax.inject.Inject
 
-class ImagesViewModel @Inject constructor(
-    private val imagesRepository: ImagesRepository,
+class PhotosViewModel @Inject constructor(
+    private val photosRepository: PhotosRepository,
     private val schedulerProvider: SchedulerProvider
 ) : ViewModel() {
 
-    private val _getImages: MutableLiveData<Boolean> = MutableLiveData()
+    private val _getPhotos: MutableLiveData<Boolean> = MutableLiveData()
 
-    var images: LiveData<Resource<List<Image>>> = _getImages.switchMap {
-        imagesRepository.getImages()
+    var photos: LiveData<Resource<List<Photo>>> = _getPhotos.switchMap {
+        photosRepository.getPhotos()
             .map { return@map Resource.success(it) }
             .onErrorReturn { e ->
                 return@onErrorReturn Resource.failure(e.message)
@@ -48,11 +48,11 @@ class ImagesViewModel @Inject constructor(
             .toLiveData()
     }
 
-    fun getImages() {
-        _getImages.value = true
+    fun getPhotos() {
+        _getPhotos.value = true
     }
 
     fun retry() {
-        _getImages.value = true
+        _getPhotos.value = true
     }
 }

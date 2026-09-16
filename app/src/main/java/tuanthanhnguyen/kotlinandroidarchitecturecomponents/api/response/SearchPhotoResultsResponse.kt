@@ -18,10 +18,10 @@
 
 package tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response
 
-class ImageUrlsResponse(
-    val raw: String,
-    val full: String,
-    val regular: String,
-    val small: String,
-    val thumb: String
+import com.google.gson.annotations.SerializedName
+
+class SearchPhotoResultsResponse(
+    val total: Int,
+    @SerializedName("total_pages") val totalPages: Int,
+    @SerializedName("results") val photoResultsResponse: List<PhotoResponse>
 )

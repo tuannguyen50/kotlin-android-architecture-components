@@ -33,7 +33,7 @@ object ApiConfig {
 
     const val AUTHORIZATION = "Authorization"
 
-    const val IMAGE_BASE_URL_UNSPLASH = "https://api.unsplash.com/"
+    const val PHOTO_BASE_URL_UNSPLASH = "https://api.unsplash.com/"
 
     const val QUERY = "query"
     const val PAGE = "page"

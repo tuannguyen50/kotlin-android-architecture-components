@@ -16,12 +16,17 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity
 
-import com.google.gson.annotations.SerializedName
+import androidx.room.ColumnInfo
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.DatabaseConfig
 
-class SearchImageResultsResponse(
-    val total: Int,
-    @SerializedName("total_pages") val totalPages: Int,
-    @SerializedName("results") val imageResultsResponse: List<ImageResponse>
+@Entity(tableName = DatabaseConfig.PHOTOS_TABLE_NAME)
+data class PhotoEntity(
+    @PrimaryKey val id: String,
+    @Embedded(prefix = "url_") val photoUrlsEmbedded: PhotoUrlsEmbedded,
+    @ColumnInfo(name = "user_id") val userId: String
 )

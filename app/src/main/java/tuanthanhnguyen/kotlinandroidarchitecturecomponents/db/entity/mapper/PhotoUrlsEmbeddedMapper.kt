@@ -16,12 +16,20 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.model
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.mapper
 
-data class ImageUrls(
-    val raw: String,
-    val full: String,
-    val regular: String,
-    val small: String,
-    val thumb: String
-)
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.PhotoUrlsEmbedded
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.PhotoUrls
+
+object PhotoUrlsEmbeddedMapper {
+
+    fun photoUrlsToPhotoUrlsEmbedded(photoUrls: PhotoUrls): PhotoUrlsEmbedded {
+        return PhotoUrlsEmbedded(
+            photoUrls.raw,
+            photoUrls.full,
+            photoUrls.regular,
+            photoUrls.small,
+            photoUrls.thumb
+        )
+    }
+}

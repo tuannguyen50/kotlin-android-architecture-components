@@ -21,12 +21,12 @@ package tuanthanhnguyen.kotlinandroidarchitecturecomponents.di
 import android.app.Application
 import androidx.room.Room
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.ApiConfig
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.ImagesService
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.PhotosService
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.DatabaseConfig
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.ImageDao
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.ImageDb
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository.ImagesRepository
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository.ImagesRepositoryImpl
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.PhotoDao
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.PhotoDb
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository.PhotosRepository
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository.PhotosRepositoryImpl
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.util.scheduler.AppSchedulerProvider
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.util.scheduler.SchedulerProvider
 import dagger.Module
@@ -36,6 +36,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.UserDao
 import javax.inject.Singleton
 
 @Module(includes = [(ViewModelModule::class)])
@@ -54,33 +55,38 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideGithubService(okHttpClient: OkHttpClient): ImagesService =
+    fun providePhotosService(okHttpClient: OkHttpClient): PhotosService =
         Retrofit.Builder()
-            .baseUrl(ApiConfig.IMAGE_BASE_URL_UNSPLASH)
+            .baseUrl(ApiConfig.PHOTO_BASE_URL_UNSPLASH)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
-            .create(ImagesService::class.java)
+            .create(PhotosService::class.java)
 
     @Singleton
     @Provides
-    fun provideDb(app: Application): ImageDb =
+    fun providePhotoDb(application: Application): PhotoDb =
         Room.databaseBuilder(
-            app,
-            ImageDb::class.java,
+            application,
+            PhotoDb::class.java,
             DatabaseConfig.DATABASE_NAME
         ).build()
 
     @Singleton
     @Provides
-    fun provideImageDao(db: ImageDb): ImageDao =
-        db.imageDao()
+    fun providePhotoDao(photoDb: PhotoDb): PhotoDao =
+        photoDb.photoDao()
 
     @Singleton
     @Provides
-    fun provideImagesRepository(imagesRepositoryImpl: ImagesRepositoryImpl): ImagesRepository =
-        imagesRepositoryImpl
+    fun provideUserDao(photoDb: PhotoDb): UserDao =
+        photoDb.userDao()
+
+    @Singleton
+    @Provides
+    fun providePhotosRepository(photosRepositoryImpl: PhotosRepositoryImpl): PhotosRepository =
+        photosRepositoryImpl
 
     @Singleton
     @Provides
