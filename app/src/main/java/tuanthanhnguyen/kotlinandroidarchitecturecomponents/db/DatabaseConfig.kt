@@ -20,7 +20,7 @@ package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db
 
 object DatabaseConfig {
 
-    const val DATABASE_NAME = "images.db"
-    const val IMAGES_TABLE_NAME = "images"
+    const val DATABASE_NAME = "photos.db"
+    const val PHOTOS_TABLE_NAME = "photos"
     const val USERS_TABLE_NAME = "users"
 }

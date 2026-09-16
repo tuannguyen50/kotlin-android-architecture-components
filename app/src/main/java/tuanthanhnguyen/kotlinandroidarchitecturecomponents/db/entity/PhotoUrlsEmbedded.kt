@@ -16,18 +16,12 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.mapper
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity
 
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.ImageResponse
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Image
-
-object ImageResponseMapper {
-
-    fun imageResponseToImage(imageResponse: ImageResponse): Image {
-        return Image(
-            imageResponse.id,
-            ImageUrlsResponseMapper.imageUrlsResponseToImageUrls(imageResponse.imageUrlsResponse),
-            UserResponseMapper.userResponseToUser(imageResponse.userResponse)
-        )
-    }
-}
+data class PhotoUrlsEmbedded(
+    val raw: String,
+    val full: String,
+    val regular: String,
+    val small: String,
+    val thumb: String
+)

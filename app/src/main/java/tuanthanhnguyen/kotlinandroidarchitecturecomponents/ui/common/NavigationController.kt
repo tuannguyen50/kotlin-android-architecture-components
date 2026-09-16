@@ -21,10 +21,11 @@ package tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.common
 import androidx.fragment.app.FragmentManager
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.MainActivity
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.R
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.images.ImagesFragment
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.photos.PhotosFragment
 import javax.inject.Inject
 
 class NavigationController @Inject constructor(mainActivity: MainActivity) {
+
     private var containerId: Int = 0
     private var fragmentManager: FragmentManager
 
@@ -33,10 +34,10 @@ class NavigationController @Inject constructor(mainActivity: MainActivity) {
         fragmentManager = mainActivity.supportFragmentManager
     }
 
-    fun navigateToImage() {
-        val searchFragment = ImagesFragment()
+    fun navigateToPhotos() {
+        val photosFragment = PhotosFragment()
         fragmentManager.beginTransaction()
-            .replace(containerId, searchFragment)
-            .commitAllowingStateLoss()
+            .add(containerId, photosFragment)
+            .commit()
     }
 }

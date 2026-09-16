@@ -23,25 +23,25 @@ import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.ImageResponse
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.SearchImageResultsResponse
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.PhotoResponse
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.SearchPhotoResultsResponse
 
-interface ImagesService {
+interface PhotosService {
 
     @GET("photos")
-    fun getImages(
+    fun getPhotos(
         @Header(ApiConfig.AUTHORIZATION) publicAuthorization: String,
-        @Query(ApiConfig.PAGE) pageNumber: Int,
-        @Query(ApiConfig.PER_PAGE) picturePerPage: Int,
+        @Query(ApiConfig.PAGE) page: Int,
+        @Query(ApiConfig.PER_PAGE) perPage: Int,
         @Query(ApiConfig.ORDER_BY) orderBy: String
-    ): Flowable<List<ImageResponse>>
+    ): Flowable<List<PhotoResponse>>
 
     @GET("search/photos")
-    fun searchImages(
+    fun searchPhotos(
         @Header(ApiConfig.AUTHORIZATION) publicAuthorization: String,
-        @Query(ApiConfig.QUERY) keyword: String,
-        @Query(ApiConfig.PAGE) pageNumber: Int,
-        @Query(ApiConfig.PER_PAGE) picturePerPage: Int,
+        @Query(ApiConfig.QUERY) query: String,
+        @Query(ApiConfig.PAGE) page: Int,
+        @Query(ApiConfig.PER_PAGE) perPage: Int,
         @Query(ApiConfig.ORDER_BY) orderBy: String
-    ): Single<SearchImageResultsResponse>
+    ): Single<SearchPhotoResultsResponse>
 }

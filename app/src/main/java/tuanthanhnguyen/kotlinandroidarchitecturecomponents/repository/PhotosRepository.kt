@@ -16,12 +16,12 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository
 
-data class ImageUrlsEmbedded(
-    val raw: String,
-    val full: String,
-    val regular: String,
-    val small: String,
-    val thumb: String
-)
+import io.reactivex.Flowable
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Photo
+
+interface PhotosRepository {
+
+    fun getPhotos(): Flowable<List<Photo>>
+}

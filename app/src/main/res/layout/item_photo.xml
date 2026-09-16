@@ -23,16 +23,16 @@
     <data>
 
         <variable
-            name="image"
-            type="tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Image" />
+            name="photo"
+            type="tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Photo" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="@dimen/grid_image_item_card_corner_radius"
-        app:elevation="@dimen/grid_image_item_card_elevation"
+        app:cardCornerRadius="@dimen/grid_photo_item_card_corner_radius"
+        app:elevation="@dimen/grid_photo_item_card_elevation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -42,11 +42,11 @@
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/image_view"
+                android:id="@+id/photo_app_compat_image_view"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:scaleType="centerCrop"
-                app:imageUrl="@{image.imageUrls.small}"
+                app:photoUrl="@{photo.photoUrls.small}"
                 app:layout_constraintDimensionRatio="h,9:6"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,18 +54,18 @@
                 tools:srcCompat="@mipmap/ic_launcher" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/author_text"
+                android:id="@+id/author_app_compat_text_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@color/transparent_black"
-                android:paddingStart="@dimen/padding_start_and_padding_end_author_text_in_grid_image_item"
-                android:paddingTop="@dimen/padding_top_and_padding_bottom_author_text_in_grid_image_item"
-                android:paddingEnd="@dimen/padding_start_and_padding_end_author_text_in_grid_image_item"
-                android:paddingBottom="@dimen/padding_top_and_padding_bottom_author_text_in_grid_image_item"
-                android:text="@{image.user.name}"
+                android:paddingStart="@dimen/padding_start_and_padding_end_author_text_in_grid_photo_item"
+                android:paddingTop="@dimen/padding_top_and_padding_bottom_author_text_in_grid_photo_item"
+                android:paddingEnd="@dimen/padding_start_and_padding_end_author_text_in_grid_photo_item"
+                android:paddingBottom="@dimen/padding_top_and_padding_bottom_author_text_in_grid_photo_item"
+                android:text="@{photo.user.name}"
                 android:textAppearance="?android:textAppearanceSmall"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/image_view"
+                app:layout_constraintBottom_toBottomOf="@+id/photo_app_compat_image_view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>

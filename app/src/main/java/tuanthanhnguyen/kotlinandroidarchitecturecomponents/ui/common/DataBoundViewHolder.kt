@@ -21,5 +21,5 @@ package tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.common
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
-class DataBoundViewHolder<out T : ViewDataBinding> internal constructor(val binding: T) :
+class DataBoundViewHolder<out T : ViewDataBinding>(val binding: T) :
     RecyclerView.ViewHolder(binding.root)

@@ -16,12 +16,20 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.mapper
 
-import com.google.gson.annotations.SerializedName
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.PhotoUrlsResponse
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.PhotoUrls
 
-class ImageResponse(
-    val id: String,
-    @SerializedName("urls") val imageUrlsResponse: ImageUrlsResponse,
-    @SerializedName("user") val userResponse: UserResponse
-)
+object PhotoUrlsResponseMapper {
+
+    fun photoUrlsResponseToPhotoUrls(photoUrlsResponse: PhotoUrlsResponse): PhotoUrls {
+        return PhotoUrls(
+            photoUrlsResponse.raw,
+            photoUrlsResponse.full,
+            photoUrlsResponse.regular,
+            photoUrlsResponse.small,
+            photoUrlsResponse.thumb
+        )
+    }
+}

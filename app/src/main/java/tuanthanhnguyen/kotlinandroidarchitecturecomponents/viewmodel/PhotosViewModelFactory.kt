@@ -26,7 +26,7 @@ import javax.inject.Singleton
 
 @Suppress("UNCHECKED_CAST")
 @Singleton
-class ImagesViewModelFactory @Inject constructor(
+class PhotosViewModelFactory @Inject constructor(
     private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
 ) : ViewModelProvider.Factory {
 

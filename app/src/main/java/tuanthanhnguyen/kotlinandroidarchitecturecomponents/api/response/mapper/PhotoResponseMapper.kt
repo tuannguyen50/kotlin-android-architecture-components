@@ -16,12 +16,20 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.mapper
 
-import io.reactivex.Flowable
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Image
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.PhotoResponse
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Photo
 
-interface ImagesRepository {
+object PhotoResponseMapper {
 
-    fun getImages(): Flowable<List<Image>>
+    fun photoResponseToPhoto(photoResponse: PhotoResponse): Photo {
+        return Photo(
+            photoResponse.id,
+            PhotoUrlsResponseMapper.photoUrlsResponseToPhotoUrls(
+                photoResponse.photoUrlsResponse
+            ),
+            UserResponseMapper.userResponseToUser(photoResponse.userResponse)
+        )
+    }
 }

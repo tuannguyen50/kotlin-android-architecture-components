@@ -23,6 +23,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
 class GridSpacingItemDecoration : RecyclerView.ItemDecoration {
+
     private var spanCount = 0
     private var spacing = 0
     private var includeEdge = false

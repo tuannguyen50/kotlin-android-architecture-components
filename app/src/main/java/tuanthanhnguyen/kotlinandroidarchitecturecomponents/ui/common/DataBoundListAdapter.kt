@@ -31,8 +31,8 @@ abstract class DataBoundListAdapter<T, V : ViewDataBinding> :
 
     private var items: List<T>? = null
 
-    // Each time data is set, we update this variable so that if DiffUtil calculation returns
-    // after repetitive updates, we can ignore the old calculation
+    // Each time data is set then update this variable so that if DiffUtil calculation returns
+    // after repetitive updates then can ignore the old calculation.
     private var dataVersion = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataBoundViewHolder<V> {

@@ -18,33 +18,21 @@
 
 package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Transaction
-import androidx.room.Update
-import androidx.room.Upsert
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.ImageEntity
+import androidx.room.Database
+import androidx.room.RoomDatabase
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.PhotoEntity
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.UserEntity
 
-@Dao
-interface ImageDao {
+@Database(
+    entities = [
+        PhotoEntity::class,
+        UserEntity::class],
+    version = 1,
+    exportSchema = true
+)
+abstract class PhotoDb : RoomDatabase() {
 
-    @Insert
-    fun insertImageEntity(imageEntity: ImageEntity)
+    abstract fun photoDao(): PhotoDao
 
-    @Upsert
-    fun upsertImageEntity(imageEntity: ImageEntity)
-
-    @Update
-    fun updateImageEntity(imageEntity: ImageEntity)
-
-    @Upsert
-    fun upsertUserEntity(userEntity: UserEntity)
-
-    @Transaction
-    fun insertImageEntityWithUserEntity(imageEntity: ImageEntity, userEntity: UserEntity) {
-        upsertUserEntity(userEntity)
-
-        upsertImageEntity(imageEntity)
-    }
+    abstract fun userDao(): UserDao
 }

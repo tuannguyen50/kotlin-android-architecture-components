@@ -16,42 +16,45 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.images
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.photos
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.R
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.databinding.ItemImageBinding
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.databinding.ItemPhotoBinding
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.common.DataBoundListAdapter
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Image
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Photo
 
-class ImagesAdapter(
+class PhotosAdapter(
     private val dataBindingComponent: DataBindingComponent
-) : DataBoundListAdapter<Image, ItemImageBinding>() {
-    override fun createBinding(parent: ViewGroup): ItemImageBinding {
-        val binding = DataBindingUtil
-            .inflate<ItemImageBinding>(
-                LayoutInflater.from(parent.context), R.layout.item_image,
-                parent, false, dataBindingComponent
-            )
+) : DataBoundListAdapter<Photo, ItemPhotoBinding>() {
+
+    override fun createBinding(parent: ViewGroup): ItemPhotoBinding {
+        val binding = DataBindingUtil.inflate<ItemPhotoBinding>(
+            LayoutInflater.from(parent.context),
+            R.layout.item_photo,
+            parent,
+            false,
+            dataBindingComponent
+        )
         return binding
     }
 
-    override fun bind(binding: ItemImageBinding, item: Image) {
-        binding.image = item
+    override fun bind(binding: ItemPhotoBinding, item: Photo) {
+        binding.photo = item
     }
 
-    override fun areItemsTheSame(oldItem: Image, newItem: Image): Boolean {
+    override fun areItemsTheSame(oldItem: Photo, newItem: Photo): Boolean {
         return oldItem.id == newItem.id
-                && oldItem.imageUrls.small == newItem.imageUrls.small
+                && oldItem.photoUrls.small == newItem.photoUrls.small
                 && oldItem.user.name == newItem.user.name
     }
 
-    override fun areContentsTheSame(oldItem: Image, newItem: Image): Boolean {
+    override fun areContentsTheSame(oldItem: Photo, newItem: Photo): Boolean {
         return oldItem.id == newItem.id
-                && oldItem.imageUrls.small == newItem.imageUrls.small
+                && oldItem.photoUrls.small == newItem.photoUrls.small
                 && oldItem.user.name == newItem.user.name
     }
 }

@@ -27,6 +27,7 @@ import dagger.android.HasAndroidInjector
 import javax.inject.Inject
 
 class KotlinAndroidArchitectureComponentsApp : Application(), HasAndroidInjector {
+
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
 

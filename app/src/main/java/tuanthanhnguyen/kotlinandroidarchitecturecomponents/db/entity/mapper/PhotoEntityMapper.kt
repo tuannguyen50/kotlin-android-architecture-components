@@ -16,23 +16,18 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.mapper
 
-import androidx.room.Database
-import androidx.room.RoomDatabase
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.ImageEntity
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.UserEntity
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.PhotoEntity
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Photo
 
-@Database(
-    entities = [
-        ImageEntity::class,
-        UserEntity::class],
-    version = 1,
-    exportSchema = true
-)
-abstract class ImageDb : RoomDatabase() {
+object PhotoEntityMapper {
 
-    abstract fun imageDao(): ImageDao
-
-    abstract fun userDao(): UserDao
+    fun photoToPhotoEntity(photo: Photo): PhotoEntity {
+        return PhotoEntity(
+            photo.id,
+            PhotoUrlsEmbeddedMapper.photoUrlsToPhotoUrlsEmbedded(photo.photoUrls),
+            photo.user.id
+        )
+    }
 }

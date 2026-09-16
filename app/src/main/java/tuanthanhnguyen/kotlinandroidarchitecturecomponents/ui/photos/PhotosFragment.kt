@@ -16,7 +16,7 @@
 
 // Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.images
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.photos
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -29,7 +29,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.R
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.binding.FragmentDataBindingComponent
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.databinding.FragmentImageBinding
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.databinding.FragmentPhotoBinding
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.di.Injectable
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.common.GridSpacingItemDecoration
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.common.NavigationController
@@ -37,7 +37,7 @@ import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.common.RetryCallba
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.util.ui.AutoClearedValue
 import javax.inject.Inject
 
-class ImagesFragment : Fragment(), Injectable {
+class PhotosFragment : Fragment(), Injectable {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -47,11 +47,11 @@ class ImagesFragment : Fragment(), Injectable {
 
     private val dataBindingComponent = FragmentDataBindingComponent(this)
 
-    private lateinit var binding: AutoClearedValue<FragmentImageBinding>
+    private lateinit var binding: AutoClearedValue<FragmentPhotoBinding>
 
-    private lateinit var adapter: AutoClearedValue<ImagesAdapter>
+    private lateinit var adapter: AutoClearedValue<PhotosAdapter>
 
-    private lateinit var imagesViewModel: ImagesViewModel
+    private lateinit var photosViewModel: PhotosViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,9 +59,9 @@ class ImagesFragment : Fragment(), Injectable {
         savedInstanceState: Bundle?
     ): View {
         val dataBinding = DataBindingUtil
-            .inflate<FragmentImageBinding>(
+            .inflate<FragmentPhotoBinding>(
                 inflater,
-                R.layout.fragment_image,
+                R.layout.fragment_photo,
                 container,
                 false,
                 dataBindingComponent
@@ -73,31 +73,31 @@ class ImagesFragment : Fragment(), Injectable {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
-        imagesViewModel = ViewModelProvider(
+        photosViewModel = ViewModelProvider(
             this,
             viewModelFactory
-        )[ImagesViewModel::class.java]
+        )[PhotosViewModel::class.java]
 
-        imagesViewModel.images.observe(viewLifecycleOwner, Observer {
+        photosViewModel.photos.observe(viewLifecycleOwner, Observer {
             binding.get()?.resource = it
             adapter.get()?.replace(it?.data)
             binding.get()?.executePendingBindings()
         })
         binding.get()?.callback = object : RetryCallback {
             override fun retry() {
-                imagesViewModel.retry()
+                photosViewModel.retry()
             }
         }
-        imagesViewModel.getImages()
+        photosViewModel.getPhotos()
     }
 
     private fun initRecyclerView() {
         val gridSpacingItemInPixels =
-            resources.getDimensionPixelSize(R.dimen.grid_image_item_spacing)
+            resources.getDimensionPixelSize(R.dimen.grid_photo_item_spacing)
         val includeEdge = true
         val spanCount = 2
-        val imagesAdapter = ImagesAdapter(dataBindingComponent)
-        binding.get()?.imageRecyclerView?.apply {
+        val photosAdapter = PhotosAdapter(dataBindingComponent)
+        binding.get()?.photosRecyclerView?.apply {
             this.layoutManager = GridLayoutManager(context, spanCount)
             this.addItemDecoration(
                 GridSpacingItemDecoration(
@@ -106,8 +106,8 @@ class ImagesFragment : Fragment(), Injectable {
                     includeEdge
                 )
             )
-            this.adapter = imagesAdapter
+            this.adapter = photosAdapter
         }
-        adapter = AutoClearedValue(this, imagesAdapter)
+        adapter = AutoClearedValue(this, photosAdapter)
     }
 }
