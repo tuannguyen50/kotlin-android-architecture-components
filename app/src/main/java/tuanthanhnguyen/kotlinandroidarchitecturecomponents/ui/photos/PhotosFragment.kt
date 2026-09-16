@@ -47,9 +47,9 @@ class PhotosFragment : Fragment(), Injectable {
 
     private val dataBindingComponent = FragmentDataBindingComponent(this)
 
-    private lateinit var binding: AutoClearedValue<FragmentPhotoBinding>
+    private var binding by AutoClearedValue<FragmentPhotoBinding>(this)
 
-    private lateinit var adapter: AutoClearedValue<PhotosAdapter>
+    private var adapter by AutoClearedValue<PhotosAdapter>(this)
 
     private lateinit var photosViewModel: PhotosViewModel
 
@@ -58,16 +58,15 @@ class PhotosFragment : Fragment(), Injectable {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dataBinding = DataBindingUtil
-            .inflate<FragmentPhotoBinding>(
+        binding = DataBindingUtil
+            .inflate(
                 inflater,
                 R.layout.fragment_photo,
                 container,
                 false,
                 dataBindingComponent
             )
-        binding = AutoClearedValue(this, dataBinding)
-        return dataBinding.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -79,11 +78,11 @@ class PhotosFragment : Fragment(), Injectable {
         )[PhotosViewModel::class.java]
 
         photosViewModel.photos.observe(viewLifecycleOwner, Observer {
-            binding.get()?.resource = it
-            adapter.get()?.replace(it?.data)
-            binding.get()?.executePendingBindings()
+            binding.resource = it
+            adapter.replace(it.data)
+            binding.executePendingBindings()
         })
-        binding.get()?.callback = object : RetryCallback {
+        binding.callback = object : RetryCallback {
             override fun retry() {
                 photosViewModel.retry()
             }
@@ -97,7 +96,7 @@ class PhotosFragment : Fragment(), Injectable {
         val includeEdge = true
         val spanCount = 2
         val photosAdapter = PhotosAdapter(dataBindingComponent)
-        binding.get()?.photosRecyclerView?.apply {
+        binding.photosRecyclerView.apply {
             this.layoutManager = GridLayoutManager(context, spanCount)
             this.addItemDecoration(
                 GridSpacingItemDecoration(
@@ -108,6 +107,6 @@ class PhotosFragment : Fragment(), Injectable {
             )
             this.adapter = photosAdapter
         }
-        adapter = AutoClearedValue(this, photosAdapter)
+        adapter = photosAdapter
     }
 }

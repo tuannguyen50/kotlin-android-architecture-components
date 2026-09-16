@@ -19,24 +19,40 @@
 package tuanthanhnguyen.kotlinandroidarchitecturecomponents.util.ui
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import kotlin.properties.ReadWriteProperty
+import kotlin.reflect.KProperty
 
-class AutoClearedValue<T>(fragment: Fragment, private var value: T?) {
+class AutoClearedValue<T : Any>(val fragment: Fragment) : ReadWriteProperty<Fragment, T> {
+
+    private var _value: T? = null
+
     init {
-        val fragmentManager = fragment.parentFragmentManager
-        fragmentManager.registerFragmentLifecycleCallbacks(
-            object : FragmentManager.FragmentLifecycleCallbacks() {
-                override fun onFragmentViewDestroyed(fm: FragmentManager, f: Fragment) {
-                    if (f == fragment) {
-                        this@AutoClearedValue.value = null
-                        fragmentManager.unregisterFragmentLifecycleCallbacks(this)
-                    }
+        fragment.lifecycle.addObserver(object : DefaultLifecycleObserver {
+            override fun onCreate(owner: LifecycleOwner) {
+                fragment.viewLifecycleOwnerLiveData.observe(
+                    fragment
+                ) { viewLifecycleOwner ->
+                    viewLifecycleOwner?.lifecycle?.addObserver(
+                        object : DefaultLifecycleObserver {
+                            override fun onDestroy(owner: LifecycleOwner) {
+                                _value = null
+                            }
+                        }
+                    )
                 }
-            }, false
+            }
+        })
+    }
+
+    override fun getValue(thisRef: Fragment, property: KProperty<*>): T {
+        return _value ?: throw IllegalStateException(
+            "should never call auto-cleared-value get when it might not be available"
         )
     }
 
-    fun get(): T? {
-        return value
+    override fun setValue(thisRef: Fragment, property: KProperty<*>, value: T) {
+        _value = value
     }
 }
