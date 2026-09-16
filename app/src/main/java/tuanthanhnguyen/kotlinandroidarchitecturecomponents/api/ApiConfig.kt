@@ -20,7 +20,7 @@ package tuanthanhnguyen.kotlinandroidarchitecturecomponents.api
 
 object ApiConfig {
 
-    /**
+    /*
      * How to this application access the photos from the Unsplash API
      *
      * First, you must create your application in your Unsplash developer account to get the
@@ -35,7 +35,6 @@ object ApiConfig {
 
     const val PHOTO_BASE_URL_UNSPLASH = "https://api.unsplash.com/"
 
-    const val QUERY = "query"
     const val PAGE = "page"
     const val PER_PAGE = "per_page"
     const val ORDER_BY = "order_by"
