@@ -30,8 +30,8 @@ android {
         applicationId "tuanthanhnguyen.kotlinandroidarchitecturecomponents"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -55,7 +55,7 @@ android {
 }
 
 dependencies {
-    implementation "androidx.appcompat:appcompat:$rootProject.androidSupportVersion"
+    implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
     implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerViewVersion"
     implementation "androidx.cardview:cardview:$rootProject.cardViewVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
@@ -65,10 +65,10 @@ dependencies {
     ksp "androidx.room:room-compiler:$rootProject.roomVersion"
 
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxJava2Version"
-    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
-    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxJava2AndroidVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofit2Version"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit2Version"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofit2Version"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp3LoggingInterceptorVersion"
 
     implementation "androidx.lifecycle:lifecycle-runtime:$rootProject.lifecycleVersion"
@@ -87,6 +87,6 @@ dependencies {
     ksp "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
 
     testImplementation "junit:junit:$rootProject.junitVersion"
-    androidTestImplementation "androidx.test.ext:junit:$rootProject.androidJunitVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.androidEspressoCoreVersion"
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.extJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoCoreVersion"
 }

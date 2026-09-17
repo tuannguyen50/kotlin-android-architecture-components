@@ -48,20 +48,22 @@ ext {
     compileSdkVersion = 37
     minSdkVersion = 23
     targetSdkVersion = 37
+    versionCode = 1
+    versionName = "1.0"
 
-    androidSupportVersion = "1.8.0"
+    appCompatVersion = "1.8.0"
     recyclerViewVersion = "1.4.0"
     cardViewVersion = "1.0.0"
     constraintLayoutVersion = "2.2.2"
     roomVersion = "2.8.5"
     rxJava2Version = "2.2.21"
-    rxAndroidVersion = "2.1.1"
-    retrofitVersion = "3.0.0"
+    rxJava2AndroidVersion = "2.1.1"
+    retrofit2Version = "3.0.0"
     okhttp3LoggingInterceptorVersion = "5.5.0"
     lifecycleVersion = "2.11.0"
     glideVersion = "5.0.9"
     daggerVersion = "2.60.1"
     junitVersion = "4.13.2"
-    androidJunitVersion = "1.3.0"
-    androidEspressoCoreVersion = "3.7.0"
+    extJunitVersion = "1.3.0"
+    espressoCoreVersion = "3.7.0"
 }
