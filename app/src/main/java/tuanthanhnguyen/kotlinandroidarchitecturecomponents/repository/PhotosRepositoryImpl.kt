@@ -44,25 +44,19 @@ class PhotosRepositoryImpl @Inject constructor(
             ApiConfig.DEFAULT_PAGE,
             ApiConfig.DEFAULT_PER_PAGE,
             ApiConfig.DEFAULT_ORDER_BY
-        )
-            .flatMap { photosResponse ->
-                Flowable.fromIterable(photosResponse)
-            }
-            .map { photoResponse ->
-                val photo = PhotoResponseMapper.photoResponseToPhoto(photoResponse)
-                return@map photo
-            }
-            .doOnNext { photo ->
-                photoDb.beginTransaction()
-                try {
+        ).map {
+            return@map PhotoResponseMapper.photoResponsesToPhotos(it)
+        }.doOnNext { photos ->
+            photoDb.beginTransaction()
+            try {
+                photos.forEach { photo ->
                     userDao.upsertUserEntity(UserEntityMapper.userToUserEntity(photo.user))
                     photoDao.upsertPhotoEntity(PhotoEntityMapper.photoToPhotoEntity(photo))
-                    photoDb.setTransactionSuccessful()
-                } finally {
-                    photoDb.endTransaction()
                 }
+                photoDb.setTransactionSuccessful()
+            } finally {
+                photoDb.endTransaction()
             }
-            .toList()
-            .toFlowable()
+        }
     }
 }
