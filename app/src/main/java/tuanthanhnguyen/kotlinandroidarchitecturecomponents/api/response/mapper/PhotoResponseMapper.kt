@@ -32,4 +32,10 @@ object PhotoResponseMapper {
             UserResponseMapper.userResponseToUser(photoResponse.userResponse)
         )
     }
+
+    fun photoResponsesToPhotos(photoResponses: List<PhotoResponse>): List<Photo> {
+        return photoResponses.map {
+            return@map photoResponseToPhoto(it)
+        }
+    }
 }
