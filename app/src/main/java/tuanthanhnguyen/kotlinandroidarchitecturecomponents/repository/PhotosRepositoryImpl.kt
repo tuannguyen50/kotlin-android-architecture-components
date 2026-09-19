@@ -47,15 +47,11 @@ class PhotosRepositoryImpl @Inject constructor(
         ).map {
             return@map PhotoResponseMapper.photoResponsesToPhotos(it)
         }.doOnNext { photos ->
-            photoDb.beginTransaction()
-            try {
+            photoDb.runInTransaction {
                 photos.forEach { photo ->
                     userDao.upsertUserEntity(UserEntityMapper.userToUserEntity(photo.user))
                     photoDao.upsertPhotoEntity(PhotoEntityMapper.photoToPhotoEntity(photo))
                 }
-                photoDb.setTransactionSuccessful()
-            } finally {
-                photoDb.endTransaction()
             }
         }
     }
