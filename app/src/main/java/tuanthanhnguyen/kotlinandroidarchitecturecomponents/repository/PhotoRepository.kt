@@ -21,7 +21,7 @@ package tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository
 import io.reactivex.Flowable
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Photo
 
-interface PhotosRepository {
+interface PhotoRepository {
 
     fun getPhotos(): Flowable<List<Photo>>
 }

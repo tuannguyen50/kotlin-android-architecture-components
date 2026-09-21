@@ -21,12 +21,12 @@ package tuanthanhnguyen.kotlinandroidarchitecturecomponents.di
 import android.app.Application
 import androidx.room.Room
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.ApiConfig
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.PhotosService
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.PhotoService
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.DatabaseConfig
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.PhotoDao
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.PhotoDb
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository.PhotosRepository
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository.PhotosRepositoryImpl
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository.PhotoRepository
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository.PhotoRepositoryImpl
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.util.scheduler.AppSchedulerProvider
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.util.scheduler.SchedulerProvider
 import dagger.Module
@@ -55,14 +55,14 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun providePhotosService(okHttpClient: OkHttpClient): PhotosService =
+    fun providePhotoService(okHttpClient: OkHttpClient): PhotoService =
         Retrofit.Builder()
             .baseUrl(ApiConfig.PHOTO_BASE_URL_UNSPLASH)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
-            .create(PhotosService::class.java)
+            .create(PhotoService::class.java)
 
     @Singleton
     @Provides
@@ -85,8 +85,8 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun providePhotosRepository(photosRepositoryImpl: PhotosRepositoryImpl): PhotosRepository =
-        photosRepositoryImpl
+    fun providePhotoRepository(photoRepositoryImpl: PhotoRepositoryImpl): PhotoRepository =
+        photoRepositoryImpl
 
     @Singleton
     @Provides

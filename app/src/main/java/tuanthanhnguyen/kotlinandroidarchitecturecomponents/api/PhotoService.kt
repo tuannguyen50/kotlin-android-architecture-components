@@ -24,7 +24,7 @@ import retrofit2.http.Header
 import retrofit2.http.Query
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.PhotoResponse
 
-interface PhotosService {
+interface PhotoService {
 
     @GET("photos")
     fun getPhotos(
