@@ -20,6 +20,8 @@ package tuanthanhnguyen.kotlinandroidarchitecturecomponents.api
 
 object ApiConfig {
 
+    const val PHOTO_BASE_URL_UNSPLASH = "https://api.unsplash.com/"
+
     /*
      * How this application accesses photos from the Unsplash API
      *
@@ -29,17 +31,13 @@ object ApiConfig {
      */
     const val ACCESS_KEY = ""
 
-    const val PUBLIC_AUTHORIZATION = "Client-ID $ACCESS_KEY"
+    const val AUTHORIZATION_HEADER_VALUE = "Client-ID $ACCESS_KEY"
 
-    const val AUTHORIZATION = "Authorization"
+    const val HEADER_AUTHORIZATION = "Authorization"
 
-    const val PHOTO_BASE_URL_UNSPLASH = "https://api.unsplash.com/"
+    const val PARAM_PAGE = "page"
+    const val PARAM_PER_PAGE = "per_page"
 
-    const val PAGE = "page"
-    const val PER_PAGE = "per_page"
-    const val ORDER_BY = "order_by"
-
-    const val DEFAULT_PAGE = 1
-    const val DEFAULT_PER_PAGE = 20
-    const val DEFAULT_ORDER_BY = "latest"
+    const val THIS_APPLICATION_DEFAULT_PAGE = 1
+    const val THIS_APPLICATION_DEFAULT_PER_PAGE = 20
 }

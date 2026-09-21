@@ -27,10 +27,9 @@ import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.PhotoRes
 interface PhotoService {
 
     @GET("photos")
-    fun getPhotos(
-        @Header(ApiConfig.AUTHORIZATION) publicAuthorization: String,
-        @Query(ApiConfig.PAGE) page: Int,
-        @Query(ApiConfig.PER_PAGE) perPage: Int,
-        @Query(ApiConfig.ORDER_BY) orderBy: String
+    fun getPhotosPageNumber(
+        @Header(ApiConfig.HEADER_AUTHORIZATION) authorizationHeaderValue: String,
+        @Query(ApiConfig.PARAM_PAGE) page: Int,
+        @Query(ApiConfig.PARAM_PER_PAGE) perPage: Int
     ): Flowable<List<PhotoResponse>>
 }

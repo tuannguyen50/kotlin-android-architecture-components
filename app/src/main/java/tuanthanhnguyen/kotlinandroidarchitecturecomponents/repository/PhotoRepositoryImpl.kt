@@ -19,7 +19,6 @@
 package tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository
 
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.ApiConfig
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.ApiConfig.PUBLIC_AUTHORIZATION
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.PhotoService
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.PhotoDao
 import io.reactivex.Flowable
@@ -39,11 +38,10 @@ class PhotoRepositoryImpl @Inject constructor(
 ) : PhotoRepository {
 
     override fun getPhotos(): Flowable<List<Photo>> {
-        return photoService.getPhotos(
-            PUBLIC_AUTHORIZATION,
-            ApiConfig.DEFAULT_PAGE,
-            ApiConfig.DEFAULT_PER_PAGE,
-            ApiConfig.DEFAULT_ORDER_BY
+        return photoService.getPhotosPageNumber(
+            ApiConfig.AUTHORIZATION_HEADER_VALUE,
+            ApiConfig.THIS_APPLICATION_DEFAULT_PAGE,
+            ApiConfig.THIS_APPLICATION_DEFAULT_PER_PAGE
         ).map {
             return@map PhotoResponseMapper.photoResponsesToPhotos(it)
         }.doOnNext { photos ->
