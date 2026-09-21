@@ -20,7 +20,7 @@ package tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository
 
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.ApiConfig
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.ApiConfig.PUBLIC_AUTHORIZATION
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.PhotosService
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.PhotoService
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.PhotoDao
 import io.reactivex.Flowable
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.mapper.PhotoResponseMapper
@@ -31,15 +31,15 @@ import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.mapper.User
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Photo
 import javax.inject.Inject
 
-class PhotosRepositoryImpl @Inject constructor(
+class PhotoRepositoryImpl @Inject constructor(
     private val photoDb: PhotoDb,
     private val photoDao: PhotoDao,
     private val userDao: UserDao,
-    private val photosService: PhotosService
-) : PhotosRepository {
+    private val photoService: PhotoService
+) : PhotoRepository {
 
     override fun getPhotos(): Flowable<List<Photo>> {
-        return photosService.getPhotos(
+        return photoService.getPhotos(
             PUBLIC_AUTHORIZATION,
             ApiConfig.DEFAULT_PAGE,
             ApiConfig.DEFAULT_PER_PAGE,

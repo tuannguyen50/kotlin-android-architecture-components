@@ -23,21 +23,21 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
 import androidx.lifecycle.toLiveData
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository.PhotosRepository
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository.PhotoRepository
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.util.scheduler.SchedulerProvider
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Photo
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.common.result.Resource
 import javax.inject.Inject
 
 class PhotosViewModel @Inject constructor(
-    private val photosRepository: PhotosRepository,
+    private val photoRepository: PhotoRepository,
     private val schedulerProvider: SchedulerProvider
 ) : ViewModel() {
 
     private val _getPhotos: MutableLiveData<Boolean> = MutableLiveData()
 
     var photos: LiveData<Resource<List<Photo>>> = _getPhotos.switchMap {
-        photosRepository.getPhotos()
+        photoRepository.getPhotos()
             .map { return@map Resource.success(it) }
             .onErrorReturn { e ->
                 return@onErrorReturn Resource.failure(e.message)
