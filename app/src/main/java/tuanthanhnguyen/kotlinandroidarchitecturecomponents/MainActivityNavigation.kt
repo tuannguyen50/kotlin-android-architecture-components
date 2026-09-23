@@ -14,17 +14,11 @@
  * limitations under the License.
  */
 
-// Tuan Thanh Nguyen modified this file.
+// Tuan Thanh Nguyen created this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.di
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents
 
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.photos.PhotosFragment
-import dagger.Module
-import dagger.android.ContributesAndroidInjector
+interface MainActivityNavigation {
 
-@Module
-abstract class FragmentBuildersModule {
-
-    @ContributesAndroidInjector
-    abstract fun contributePhotosFragment(): PhotosFragment
+    fun navigateToImagesFragment()
 }

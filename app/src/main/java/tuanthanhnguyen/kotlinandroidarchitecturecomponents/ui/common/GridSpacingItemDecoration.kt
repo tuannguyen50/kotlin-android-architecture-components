@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-// Tuan Thanh Nguyen modified this file.
+// Tuan Thanh Nguyen implemented this code based on the solution on Stack Overflow. The link to
+// this solution on Stack Overflow is https://stackoverflow.com/a/30701422.
 
 package tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.common
 
@@ -22,17 +23,11 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-class GridSpacingItemDecoration : RecyclerView.ItemDecoration {
-
-    private var spanCount = 0
-    private var spacing = 0
-    private var includeEdge = false
-
-    constructor(spanCount: Int, spacing: Int, includeEdge: Boolean) {
-        this.spanCount = spanCount
-        this.spacing = spacing
-        this.includeEdge = includeEdge
-    }
+class GridSpacingItemDecoration(
+    private val spanCount: Int,
+    private val spacing: Int,
+    private val includeEdge: Boolean
+) : RecyclerView.ItemDecoration() {
 
     override fun getItemOffsets(
         outRect: Rect,

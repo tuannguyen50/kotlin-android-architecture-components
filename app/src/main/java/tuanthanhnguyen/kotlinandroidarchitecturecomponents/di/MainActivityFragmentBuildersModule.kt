@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-// Tuan Thanh Nguyen refactored this file.
+// Tuan Thanh Nguyen modified this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents.di
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.DatabaseConfig
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.photos.PhotosFragment
+import dagger.Module
+import dagger.android.ContributesAndroidInjector
 
-@Entity(tableName = DatabaseConfig.USERS_TABLE_NAME)
-data class UserEntity(
-    @PrimaryKey val id: String,
-    val username: String,
-    val name: String
-)
+@Module
+abstract class MainActivityFragmentBuildersModule {
+
+    @ContributesAndroidInjector
+    abstract fun contributePhotosFragment(): PhotosFragment
+}

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-// Tuan Thanh Nguyen modified this file.
+// Tuan Thanh Nguyen created this file.
 
 package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.mapper
 
