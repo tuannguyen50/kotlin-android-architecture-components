@@ -19,7 +19,8 @@
 package tuanthanhnguyen.kotlinandroidarchitecturecomponents.di
 
 import android.app.Application
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.KotlinAndroidArchitectureComponentsApp
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents
+.KotlinAndroidArchitectureComponentsApp
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -43,5 +44,8 @@ interface AppComponent {
         fun build(): AppComponent
     }
 
-    fun inject(kotlinAndroidArchitectureComponentsApp: KotlinAndroidArchitectureComponentsApp)
+    fun inject(
+        kotlinAndroidArchitectureComponentsApp:
+        KotlinAndroidArchitectureComponentsApp
+    )
 }

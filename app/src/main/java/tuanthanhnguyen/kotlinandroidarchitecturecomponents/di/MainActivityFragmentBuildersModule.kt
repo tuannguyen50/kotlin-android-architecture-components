@@ -23,7 +23,7 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Module
-abstract class FragmentBuildersModule {
+abstract class MainActivityFragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributePhotosFragment(): PhotosFragment

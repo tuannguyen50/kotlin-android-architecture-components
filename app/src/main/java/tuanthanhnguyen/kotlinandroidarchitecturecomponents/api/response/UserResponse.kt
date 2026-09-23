@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-// Tuan Thanh Nguyen modified this file.
+// Tuan Thanh Nguyen refactored this file.
 
 package tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response
 

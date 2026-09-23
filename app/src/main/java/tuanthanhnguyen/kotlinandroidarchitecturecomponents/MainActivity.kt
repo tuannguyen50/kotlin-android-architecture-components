@@ -21,7 +21,6 @@ package tuanthanhnguyen.kotlinandroidarchitecturecomponents
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.common.NavigationController
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
@@ -32,12 +31,15 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
 
-    @Inject
-    lateinit var navigationController: NavigationController
+    private lateinit var mainActivityNavigation: MainActivityNavigation
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        mainActivityNavigation = MainActivityNavigationImpl(
+            this@MainActivity
+        )
 
         // Add the photos fragment if the creation of this activity not from the recreation of
         // this activity the recreation of this activity then savedInstanceStatus at this onCreate
@@ -47,7 +49,7 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
         // added before then the fragment manager manages the fragment back stack this fragment
         // back stack has many the photos fragment
         if (savedInstanceState == null) {
-            navigationController.navigateToPhotos()
+            mainActivityNavigation.navigateToPhotosFragment()
         }
     }
 

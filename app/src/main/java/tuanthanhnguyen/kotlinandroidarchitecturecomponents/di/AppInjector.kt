@@ -24,14 +24,18 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.KotlinAndroidArchitectureComponentsApp
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents
+.KotlinAndroidArchitectureComponentsApp
 import dagger.android.AndroidInjection
 import dagger.android.HasAndroidInjector
 import dagger.android.support.AndroidSupportInjection
 
 object AppInjector {
 
-    fun init(kotlinAndroidArchitectureComponentsApp: KotlinAndroidArchitectureComponentsApp) {
+    fun init(
+        kotlinAndroidArchitectureComponentsApp:
+        KotlinAndroidArchitectureComponentsApp
+    ) {
         DaggerAppComponent.builder()
             .application(kotlinAndroidArchitectureComponentsApp)
             .build()
@@ -71,10 +75,12 @@ object AppInjector {
             activity.supportFragmentManager.registerFragmentLifecycleCallbacks(
                 object : FragmentManager.FragmentLifecycleCallbacks() {
                     override fun onFragmentCreated(
-                        fm: FragmentManager, f: Fragment, savedInstanceState: Bundle?
+                        fragmentManager: FragmentManager,
+                        fragment: Fragment,
+                        savedInstanceState: Bundle?
                     ) {
-                        if (f is Injectable) {
-                            AndroidSupportInjection.inject(f)
+                        if (fragment is Injectable) {
+                            AndroidSupportInjection.inject(fragment)
                         }
                     }
                 }, true

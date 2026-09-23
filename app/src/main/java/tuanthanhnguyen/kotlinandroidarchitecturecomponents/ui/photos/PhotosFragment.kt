@@ -32,7 +32,6 @@ import tuanthanhnguyen.kotlinandroidarchitecturecomponents.binding.FragmentDataB
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.databinding.FragmentPhotoBinding
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.di.Injectable
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.common.GridSpacingItemDecoration
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.common.NavigationController
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.common.RetryCallback
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.util.ui.AutoClearedValue
 import javax.inject.Inject
@@ -41,9 +40,6 @@ class PhotosFragment : Fragment(), Injectable {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    @Inject
-    lateinit var navigationController: NavigationController
 
     private val dataBindingComponent = FragmentDataBindingComponent(this)
 
@@ -95,7 +91,7 @@ class PhotosFragment : Fragment(), Injectable {
             resources.getDimensionPixelSize(R.dimen.grid_photo_item_spacing)
         val includeEdge = true
         val spanCount = 2
-        val photosAdapter = PhotosAdapter(dataBindingComponent)
+        adapter = PhotosAdapter(dataBindingComponent)
         binding.photosRecyclerView.apply {
             this.layoutManager = GridLayoutManager(context, spanCount)
             this.addItemDecoration(
@@ -105,8 +101,7 @@ class PhotosFragment : Fragment(), Injectable {
                     includeEdge
                 )
             )
-            this.adapter = photosAdapter
+            this.adapter = this@PhotosFragment.adapter
         }
-        adapter = photosAdapter
     }
 }

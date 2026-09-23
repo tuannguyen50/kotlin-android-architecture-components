@@ -14,17 +14,11 @@
  * limitations under the License.
  */
 
-// Tuan Thanh Nguyen refactored this file.
+// Tuan Thanh Nguyen created this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.DatabaseConfig
+interface MainActivityNavigation {
 
-@Entity(tableName = DatabaseConfig.USERS_TABLE_NAME)
-data class UserEntity(
-    @PrimaryKey val id: String,
-    val username: String,
-    val name: String
-)
+    fun navigateToPhotosFragment()
+}

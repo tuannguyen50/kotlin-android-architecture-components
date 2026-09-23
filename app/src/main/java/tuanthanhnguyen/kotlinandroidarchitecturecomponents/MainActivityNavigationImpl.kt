@@ -14,30 +14,20 @@
  * limitations under the License.
  */
 
-// Tuan Thanh Nguyen modified this file.
+// Tuan Thanh Nguyen created this file.
 
-package tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.common
+package tuanthanhnguyen.kotlinandroidarchitecturecomponents
 
-import androidx.fragment.app.FragmentManager
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.MainActivity
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.R
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.photos.PhotosFragment
-import javax.inject.Inject
 
-class NavigationController @Inject constructor(mainActivity: MainActivity) {
+class MainActivityNavigationImpl(
+    private val mainActivity: MainActivity
+) : MainActivityNavigation {
 
-    private var containerId: Int = 0
-    private var fragmentManager: FragmentManager
-
-    init {
-        containerId = R.id.container
-        fragmentManager = mainActivity.supportFragmentManager
-    }
-
-    fun navigateToPhotos() {
+    override fun navigateToPhotosFragment() {
         val photosFragment = PhotosFragment()
-        fragmentManager.beginTransaction()
-            .add(containerId, photosFragment)
+        mainActivity.supportFragmentManager.beginTransaction()
+            .replace(R.id.container, photosFragment)
             .commit()
     }
 }
