@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
         // added before then the fragment manager manages the fragment back stack this fragment
         // back stack has many the photos fragment
         if (savedInstanceState == null) {
-            mainActivityNavigation.navigateToImagesFragment()
+            mainActivityNavigation.navigateToPhotosFragment()
         }
     }
 

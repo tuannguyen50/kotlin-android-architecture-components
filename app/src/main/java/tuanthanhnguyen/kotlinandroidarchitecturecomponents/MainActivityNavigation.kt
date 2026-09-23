@@ -20,5 +20,5 @@ package tuanthanhnguyen.kotlinandroidarchitecturecomponents
 
 interface MainActivityNavigation {
 
-    fun navigateToImagesFragment()
+    fun navigateToPhotosFragment()
 }

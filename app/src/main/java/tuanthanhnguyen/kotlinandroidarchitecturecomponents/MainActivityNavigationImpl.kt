@@ -24,7 +24,7 @@ class MainActivityNavigationImpl(
     private val mainActivity: MainActivity
 ) : MainActivityNavigation {
 
-    override fun navigateToImagesFragment() {
+    override fun navigateToPhotosFragment() {
         val photosFragment = PhotosFragment()
         mainActivity.supportFragmentManager.beginTransaction()
             .replace(R.id.container, photosFragment)
