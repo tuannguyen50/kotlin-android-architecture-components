@@ -18,11 +18,11 @@
 
 package tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository
 
+import io.reactivex.Single
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.ApiConfig
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.PhotoService
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.PhotoDao
-import io.reactivex.Flowable
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.api.response.mapper.PhotoResponseMapper
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.PhotoDao
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.PhotoDb
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.UserDao
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.db.entity.mapper.PhotoEntityMapper
@@ -37,14 +37,14 @@ class PhotoRepositoryImpl @Inject constructor(
     private val photoService: PhotoService
 ) : PhotoRepository {
 
-    override fun getPhotos(): Flowable<List<Photo>> {
+    override fun getPhotos(): Single<List<Photo>> {
         return photoService.getPhotosPageNumber(
             ApiConfig.AUTHORIZATION_HEADER_VALUE,
             ApiConfig.THIS_APPLICATION_DEFAULT_PAGE,
             ApiConfig.THIS_APPLICATION_DEFAULT_PER_PAGE
         ).map {
             return@map PhotoResponseMapper.photoResponsesToPhotos(it)
-        }.doOnNext { photos ->
+        }.doOnSuccess { photos ->
             photoDb.runInTransaction {
                 photos.forEach { photo ->
                     userDao.upsertUserEntity(UserEntityMapper.userToUserEntity(photo.user))

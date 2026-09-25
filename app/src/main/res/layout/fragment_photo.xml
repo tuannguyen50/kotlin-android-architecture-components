@@ -46,7 +46,7 @@
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
 
         <include
-            android:id="@+id/loading_include"
+            android:id="@+id/include_loading_state"
             layout="@layout/loading_state"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

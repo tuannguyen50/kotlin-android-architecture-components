@@ -73,7 +73,7 @@ class PhotosFragment : Fragment(), Injectable {
             viewModelFactory
         )[PhotosViewModel::class.java]
 
-        photosViewModel.photos.observe(viewLifecycleOwner, Observer {
+        photosViewModel.photoListState.observe(viewLifecycleOwner, Observer {
             binding.resource = it
             adapter.replace(it.data)
             binding.executePendingBindings()

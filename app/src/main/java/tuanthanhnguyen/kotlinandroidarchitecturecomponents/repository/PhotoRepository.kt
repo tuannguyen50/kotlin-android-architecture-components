@@ -18,10 +18,10 @@
 
 package tuanthanhnguyen.kotlinandroidarchitecturecomponents.repository
 
-import io.reactivex.Flowable
+import io.reactivex.Single
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.model.Photo
 
 interface PhotoRepository {
 
-    fun getPhotos(): Flowable<List<Photo>>
+    fun getPhotos(): Single<List<Photo>>
 }
