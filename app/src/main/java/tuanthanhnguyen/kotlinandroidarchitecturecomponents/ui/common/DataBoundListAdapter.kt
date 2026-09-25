@@ -105,7 +105,7 @@ abstract class DataBoundListAdapter<T, V : ViewDataBinding> :
 
                     override fun onPostExecute(diffResult: DiffUtil.DiffResult) {
                         if (startVersion != dataVersion) {
-                            // ignore update
+                            // Ignore update
                             return
                         }
                         items = update

@@ -18,7 +18,7 @@
 
 package tuanthanhnguyen.kotlinandroidarchitecturecomponents.api
 
-import io.reactivex.Flowable
+import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
@@ -31,5 +31,5 @@ interface PhotoService {
         @Header(ApiConfig.HEADER_AUTHORIZATION) authorizationHeaderValue: String,
         @Query(ApiConfig.PARAM_PAGE) page: Int,
         @Query(ApiConfig.PARAM_PER_PAGE) perPage: Int
-    ): Flowable<List<PhotoResponse>>
+    ): Single<List<PhotoResponse>>
 }
