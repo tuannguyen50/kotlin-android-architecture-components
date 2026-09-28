@@ -18,18 +18,18 @@
 
 buildscript {
     ext {
-        gradleBuildVersion = "9.3.1"
+        androidGradlePluginVersion = "9.3.1"
         kotlinGradlePluginVersion = "2.4.20"
-        kspVersion = "2.3.11"
-        legacyKaptVersion = "9.3.1"
+        kspGradlePluginVersion = "2.3.11"
+        legacyKaptGradlePluginVersion = "9.3.1"
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:$gradleBuildVersion"
+        classpath "com.android.tools.build:gradle:$androidGradlePluginVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinGradlePluginVersion"
 
-        classpath "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:$kspVersion"
+        classpath "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:$kspGradlePluginVersion"
         // Add the Android Legacy Kapt Gradle Plugin needed for Data Binding
-        classpath "com.android.legacy-kapt:com.android.legacy-kapt.gradle.plugin:$legacyKaptVersion"
+        classpath "com.android.legacy-kapt:com.android.legacy-kapt.gradle.plugin:$legacyKaptGradlePluginVersion"
     }
     repositories {
         google()

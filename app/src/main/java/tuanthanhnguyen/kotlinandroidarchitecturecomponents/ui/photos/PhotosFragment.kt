@@ -78,7 +78,7 @@ class PhotosFragment : Fragment(), Injectable {
             adapter.replace(it.data)
             binding.executePendingBindings()
         })
-        binding.callback = object : RetryCallback {
+        binding.retryCallback = object : RetryCallback {
             override fun retry() {
                 photosViewModel.retry()
             }
