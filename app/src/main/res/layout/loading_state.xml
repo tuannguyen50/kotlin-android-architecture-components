@@ -30,7 +30,7 @@
             type="tuanthanhnguyen.kotlinandroidarchitecturecomponents.common.result.Resource" />
 
         <variable
-            name="callback"
+            name="retryCallback"
             type="tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.common.RetryCallback" />
     </data>
 
@@ -53,8 +53,8 @@
             android:id="@+id/retry_app_compat_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> callback.retry()}"
-            android:text="@string/retry"
+            android:onClick="@{() -> retryCallback.retry()}"
+            android:text="@string/loading_state_button_retry"
             app:visibleGone="@{resource.status == Status.ERROR}" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -62,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_between_views_in_loading_state_layout"
-            android:text="@{resource.errorMessage ?? @string/unknown_error}"
+            android:text="@{resource.errorMessage ?? @string/loading_state_unknown_error}"
             app:visibleGone="@{resource.status == Status.ERROR}" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>
