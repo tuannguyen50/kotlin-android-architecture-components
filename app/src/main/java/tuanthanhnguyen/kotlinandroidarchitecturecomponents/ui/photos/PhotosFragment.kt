@@ -29,7 +29,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.R
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.binding.FragmentDataBindingComponent
-import tuanthanhnguyen.kotlinandroidarchitecturecomponents.databinding.FragmentPhotoBinding
+import tuanthanhnguyen.kotlinandroidarchitecturecomponents.databinding.FragmentPhotosBinding
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.di.Injectable
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.common.GridSpacingItemDecoration
 import tuanthanhnguyen.kotlinandroidarchitecturecomponents.ui.common.RetryCallback
@@ -43,7 +43,7 @@ class PhotosFragment : Fragment(), Injectable {
 
     private val dataBindingComponent = FragmentDataBindingComponent(this)
 
-    private var binding by AutoClearedValue<FragmentPhotoBinding>(this)
+    private var binding by AutoClearedValue<FragmentPhotosBinding>(this)
 
     private var adapter by AutoClearedValue<PhotosAdapter>(this)
 
@@ -57,7 +57,7 @@ class PhotosFragment : Fragment(), Injectable {
         binding = DataBindingUtil
             .inflate(
                 inflater,
-                R.layout.fragment_photo,
+                R.layout.fragment_photos,
                 container,
                 false,
                 dataBindingComponent
